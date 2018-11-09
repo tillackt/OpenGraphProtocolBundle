@@ -1,5 +1,5 @@
 {
-    "name" : "beyerz/open-graph-protocol-bundle",
+    "name" : "tillackt/open-graph-protocol-bundle",
     "description" : "Integration for OpenGraph protocol and Symfony2",
     "type" : "symfony-bundle",
     "authors" : [{
@@ -18,7 +18,7 @@
     "license" : "MIT",
     "require": {
         "php": ">=5.5",
-        "symfony/symfony": "~2.8|~3.0"
+        "symfony/symfony": "~2.8|~3.0|~4.1"
     },
     "require-dev" :{
         "symfony/phpunit-bridge": "~3"
