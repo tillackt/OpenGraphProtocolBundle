@@ -1,14 +1,21 @@
 parameters:
 
 services:
-    beyerz.ogp.open_graph:
-        class: Beyerz\OpenGraphProtocolBundle\Libraries\OpenGraph
-        calls:
-            - [setContainer, ["@service_container"]]
-            - [prepareLibraryDefaults]
-    beyerz.twig.beyerz_open_graph_protocol_extension:
-        class: Beyerz\OpenGraphProtocolBundle\Twig\Extensions\OpenGraphProtocolExtension
-        calls:
-            - [setOpenGraph, ["@beyerz.ogp.open_graph"]]
-        tags:
-            - { name: twig.extension }
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+        
+    Beyerz\:
+        resource: '../*'
+        exclude: '../{Tests}'
+
+    Beyerz\OpenGraphProtocolBundle\Libraries\OpenGraph:
+        # redundant thanks to _defaults, but value is overridable on each service
+        autowire: true
+        # not required, will help in our example
+        public: true
+
+    Beyerz\OpenGraphProtocolBundle\Twig\Extensions\OpenGraphProtocolExtension:
+        autowire: true
+        public: true
