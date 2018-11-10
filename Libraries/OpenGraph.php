@@ -1,6 +1,7 @@
 <?php
 namespace Beyerz\OpenGraphProtocolBundle\Libraries;
 
+use Psr\Container\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 /**
@@ -21,10 +22,20 @@ class OpenGraph implements OpenGraphInterface {
     private $libraries = array();
 
     /**
+     * OpenGraph constructor.
+     *
+     * @param ContainerInterface $container
+     */
+    public function __construct(ContainerInterface $container)
+    {
+        $this->prepareLibraryDefaults($container);
+    }
+    
+    /**
      * Load the defined libraries and set the defaults on each of them
      */
-    public function prepareLibraryDefaults(){
-        $libraries = $this->container->getParameter('libraries');
+    public function prepareLibraryDefaults(ContainerInterface $container){
+        $libraries = $container->getParameter('libraries');
         //Initiate Library Classes and load defaults
         foreach($libraries as $library=>$defaults){
             //load class
