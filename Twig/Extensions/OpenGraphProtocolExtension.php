@@ -13,6 +13,16 @@ class OpenGraphProtocolExtension extends \Twig_Extension {
      */
     private $openGraph;
 
+    /**
+     * OpenGraphProtocolExtension constructor.
+     *
+     * @param OpenGraph $openGraph
+     */
+    public function __construct(OpenGraph $openGraph)
+    {
+        $this->openGraph = $openGraph;
+    }
+    
     public function getFunctions() {
         return array(
             new \Twig_SimpleFunction('ogp', array($this, 'renderMetaTags')));
